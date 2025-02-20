@@ -1,12 +1,17 @@
-﻿namespace MechanicalVentilation
-{
-    public class Floor : List<Room>
-    {
-        public string Name { get; private set; }
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-        public Floor(string name, List<Room> rooms) : base(rooms)
+
+namespace MechanicalVentilation
+{
+    [ObservableObject]
+    public partial class Floor : List<Room>
+    {
+        [ObservableProperty]
+        string name;
+
+        public Floor(string Name, List<Room> rooms) : base(rooms)
         {
-            Name = name;
+            name = Name;
         }
     }
 }

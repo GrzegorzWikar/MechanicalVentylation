@@ -1,14 +1,35 @@
-﻿namespace MechanicalVentilation
+﻿using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
+
+namespace MechanicalVentilation
 {
     public partial class MainPage : ContentPage
     {
-        public List<Floor> Floors { get; set; } = new List<Floor>();
+        ObservableCollection<Floor> floors;
+        public ObservableCollection<Floor> Floors
+        {
+            get => floors;
+            set
+            {
+                floors = value;
+                OnPropertyChanged(nameof(floors));
+            }
+        }
+
+        [RelayCommand]
+        void AddFloor()
+        {
+            Floor floor = new Floor("", new List<Room>());
+            floors.Add(floor);
+        }
 
         public MainPage()
         {
             InitializeComponent();
 
-            Floors.Add(new Floor("Piwnica", new List<Room>
+            floors = new ObservableCollection<Floor>();
+
+            floors.Add(new Floor("Piwnica", new List<Room>
             {
                 new Room
                 {
@@ -38,7 +59,7 @@
                  }
             }));
 
-            Floors.Add(new Floor("Parter", new List<Room>
+            floors.Add(new Floor("Parter", new List<Room>
             {
                 new Room
                 {
