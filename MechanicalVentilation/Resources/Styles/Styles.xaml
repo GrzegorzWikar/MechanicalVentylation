@@ -12,12 +12,19 @@
         <Setter Property="IndicatorColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}"/>
         <Setter Property="SelectedIndicatorColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}"/>
     </Style>
-
-    <Style TargetType="Border">
-        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
-        <Setter Property="StrokeShape" Value="RoundRectangle 20"/>
+    <LinearGradientBrush x:Key="GradientBorderBrush" EndPoint="0,1">
+        <GradientStop Color="#F0B651" Offset="0.1" />
+        <GradientStop Color="#F051CB" Offset="1.0" />
+        </LinearGradientBrush>
+    <Style TargetType="Border" >
         <Setter Property="StrokeThickness" Value="4"/>
-        <Setter Property="Background" Value="#FFFFE4E1"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 20"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="Background" Value="#519EF0"/>
+        <Setter Property="Stroke" Value="{StaticResource GradientBorderBrush}" />
+        
     </Style>
 
     <Style TargetType="BoxView">
@@ -26,8 +33,9 @@
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
-        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="BackgroundColor" Value="#FFFFE4E1" />
+        <Setter Property="FontFamily" Value="Calibri"/>
+        <Setter Property="LineBreakMode" Value="WordWrap"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="BorderWidth" Value="0"/>
         <Setter Property="CornerRadius" Value="8"/>
@@ -163,10 +171,11 @@
     </Style>
 
     <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="TextColor" Value="White"/>
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="FontFamily" Value="OpenSansRegular" />
-        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="Calibri" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="LineBreakMode" Value="WordWrap"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
